@@ -1,0 +1,30 @@
+# Credenciais e segredos confidenciais do Google Cloud e APIs (NUNCA SUBIR)
+credentials.json
+token.json
+config_gbp.json
+*.env
+*.env.*
+.env
+
+# Scripts e caches do Python (apenas para uso local)
+*.py
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.pytest_cache/
+.coverage
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel Cache
+.vercel

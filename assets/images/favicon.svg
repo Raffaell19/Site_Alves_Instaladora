@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="50%" stop-color="#E5A93C"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0A0E17"/>
+  <circle cx="32" cy="32" r="28" stroke="url(#goldGrad)" stroke-width="2" fill="none" opacity="0.4"/>
+  <!-- Stylized A with electrical lightning bolt -->
+  <path d="M 32 10 L 48 48 L 40 48 L 36 38 L 28 38 L 24 48 L 16 48 Z M 32 23 L 29.5 31 L 34.5 31 Z" fill="url(#goldGrad)"/>
+  <path d="M 34 26 L 24 39 L 31 39 L 28 52 L 40 37 L 33 37 Z" fill="url(#greenGrad)"/>
+</svg>
