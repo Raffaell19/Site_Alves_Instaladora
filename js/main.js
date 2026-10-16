@@ -38,21 +38,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // 4. MOBILE MENU DRAWER
+  // 4. MOBILE MENU DRAWER DEDICADO
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
-  const desktopNav = document.querySelector('.desktop-nav');
-  if (mobileToggle && desktopNav) {
-    mobileToggle.addEventListener('click', () => {
-      desktopNav.classList.toggle('mobile-open');
-      const isOpen = desktopNav.classList.contains('mobile-open');
-      mobileToggle.setAttribute('aria-expanded', isOpen);
+  const mobileDrawer = document.getElementById('mobile-drawer');
+
+  if (mobileToggle && mobileDrawer) {
+    function toggleMobileMenu(forceClose = false) {
+      const isCurrentlyOpen = mobileDrawer.classList.contains('open');
+      const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+      mobileDrawer.classList.toggle('open', shouldOpen);
+      mobileToggle.classList.toggle('active', shouldOpen);
+      mobileToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      mobileDrawer.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+
+      // Trava ou libera a rolagem da página quando o menu está aberto
+      if (shouldOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
     });
 
-    // Fechar ao clicar em um link
-    desktopNav.querySelectorAll('.nav-link').forEach(link => {
+    // Fechar ao clicar em qualquer link de navegação do drawer
+    mobileDrawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        desktopNav.classList.remove('mobile-open');
+        toggleMobileMenu(true);
       });
+    });
+
+    // Fechar ao redimensionar se a tela voltar para desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mobileDrawer.classList.contains('open')) {
+        toggleMobileMenu(true);
+      }
     });
   }
 
